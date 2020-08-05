@@ -1,0 +1,10 @@
+<div class="card" [routerLink]="['detail', card.id]">
+    <img src="{{ card.imageUrl }}" alt="" />
+    <p><b>Nome:</b>{{ card.name }}</p>
+    <p><b>Id:</b>{{ card.id }}</p>
+    <p><b>Tipo:</b></p>
+    <ul *ngIf="card.types">
+      <li *ngFor="let type of card.types">{{ type }}</li>
+    </ul>
+    <a [routerLink]="['detail', card.id]"></a>
+</div>

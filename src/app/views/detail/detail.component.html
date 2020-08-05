@@ -1,0 +1,28 @@
+<section>
+    <img src="{{card.imageUrlHiRes}}" alt="" class="responsive-img" />
+</section>
+<a [routerLink]="['/']">
+    Voltar
+</a>
+<section>
+    <p>{{card.id}}</p>
+    <p>{{card.name}}</p>
+    <p *ngFor="let type of card.types">{{type}}</p>
+    <h5>Lista de Ataques</h5>
+    <p>Mana</p>
+    <ul *ngFor="let attack of card.attacks">
+        <li>{{attack.cost}}</li>
+        <li>{{attack.damage}}</li>
+        <li>{{attack.name}}</li>
+        <li>{{attack.text}}</li>
+    </ul>
+    <h5>Resistência(s)</h5>
+    <ul *ngFor="let x of card.resistances">
+        <li>{{card.resistances}}</li>
+    </ul>
+    <h5>Fraqueza(s)</h5>
+    <ul *ngFor="let weakness of card.weaknesses">
+        <li>{{weakness.type}}</li>
+        <li>{{weakness.value}}</li>
+    </ul>
+</section>
