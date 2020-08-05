@@ -19,12 +19,14 @@ export class HomeComponent implements OnInit {
 
   getCards() {
     this.apiCardsService.getCardsWithFlag().subscribe(data => {
-      let tmp: CardsPageableModel[] = []
-      data['cards'].map((field) => {
-        const { attacks, name, id, imageUrl, imageUrlHiRes, types, weaknesses, resistances } = field;
-        tmp.push({ attacks, name, id, imageUrl, imageUrlHiRes, types, weaknesses, resistances });
-      });
-      this.cards.push(...tmp.sort((a,b) => a.name.localeCompare(b.name)));
+      let tmp: CardsPageableModel[] = [];
+      setTimeout(
+        data['cards'].map((field) => {
+          const { attacks, name, id, imageUrl, imageUrlHiRes, types, weaknesses, resistances } = field;
+          tmp.push({ attacks, name, id, imageUrl, imageUrlHiRes, types, weaknesses, resistances });
+        })
+        , 10000)
+      this.cards.push(...tmp.sort((a, b) => a.name.localeCompare(b.name)));
     });
   }
 }

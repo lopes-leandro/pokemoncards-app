@@ -1,28 +1,80 @@
-<section>
-    <img src="{{card.imageUrlHiRes}}" alt="" class="responsive-img" />
-</section>
-<a [routerLink]="['/']">
+<!-- <a [routerLink]="['/']">
     Voltar
-</a>
-<section>
-    <p>{{card.id}}</p>
-    <p>{{card.name}}</p>
-    <p *ngFor="let type of card.types">{{type}}</p>
-    <h5>Lista de Ataques</h5>
-    <p>Mana</p>
-    <ul *ngFor="let attack of card.attacks">
-        <li>{{attack.cost}}</li>
-        <li>{{attack.damage}}</li>
-        <li>{{attack.name}}</li>
-        <li>{{attack.text}}</li>
-    </ul>
-    <h5>Resistência(s)</h5>
-    <ul *ngFor="let x of card.resistances">
-        <li>{{card.resistances}}</li>
-    </ul>
-    <h5>Fraqueza(s)</h5>
-    <ul *ngFor="let weakness of card.weaknesses">
-        <li>{{weakness.type}}</li>
-        <li>{{weakness.value}}</li>
-    </ul>
-</section>
+</a> -->
+<div class="container__wrapper">
+  <div *ngIf="card; else loading" class="container__card">
+    <div class="card__image">
+      <img src="{{ card.imageUrlHiRes }}" alt="" />
+    </div>
+    <div class="card__content">
+      <div class="title__code">{{ card.id }}</div>
+      <div class="title">
+        <span>{{ card.name }}</span><span *ngFor="let type of card.types">{{ type }}</span>
+      </div>
+      <div class="actions__container" *ngIf="card.attacks">
+        <div class="title__1">
+          Attacks
+        </div>
+        <div *ngFor="let attack of card.attacks">
+          <div class="title__2">
+            <span>Cost</span>
+            <span>Mana</span>
+          </div>
+          <div class="text_1">
+            <span>{{ attack.cost }}</span>
+            <span>{{ attack.damage }}</span>
+          </div>
+          <div class="title__2">
+            <span>Name</span>
+            <span>Convert Energy Cost</span>
+          </div>
+          <div class="text_1">
+            <span>{{ attack.name }}</span>
+            <span>{{ attack.convertedEnergyCost }}</span>
+          </div>
+          <div class="title__2">
+            <span>Description</span>
+          </div>
+          <div class="text_1">{{ attack.text }}</div>
+        </div>
+      </div>
+      <div class="actions__container" *ngIf="card.resistances">
+        <div class="title__1">
+          Resistances
+        </div>
+        <div *ngFor="let attack of card.resistances">
+          <div class="title__2">
+            <span>type</span>
+            <span>value</span>
+          </div>
+          <div class="text_1">
+            <span>{{ attack.type }}</span>
+            <span>{{ attack.value }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions__container" *ngIf="card.weaknesses">
+        <div class="title__1">
+          Weaknesses
+        </div>
+        <div *ngFor="let attack of card.weaknesses">
+          <div class="title__2">
+            <span><b>type</b></span>
+            <span><b>value</b></span>
+          </div>
+          <div class="text_1">
+            <span>{{ attack.type }}</span>
+            <span>{{ attack.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <pre>
+    {{ card | json }}
+</pre> -->
+
+<ng-template #loading>
+  <div>Loading...</div>
+</ng-template>
