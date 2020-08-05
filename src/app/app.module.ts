@@ -9,6 +9,7 @@ import { CardWrapperComponent } from './shared/card-wrapper/card-wrapper.compone
 import { DetailComponent } from './views/detail/detail.component';
 import { ToolsComponent } from './shared/tools/tools.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,7 @@ import { ToolsComponent } from './shared/tools/tools.component';
     CardComponent,
     CardWrapperComponent,
     DetailComponent,
-    ToolsComponent
+    ToolsComponent,
   ],
   imports: [
     BrowserModule,

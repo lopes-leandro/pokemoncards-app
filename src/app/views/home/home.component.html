@@ -1,1 +1,4 @@
-<app-card-wrapper [cards]="cards"></app-card-wrapper>
+<app-card-wrapper *ngIf="cards; else loading" [cards]="cards"></app-card-wrapper>
+<ng-template #loading>
+    <div>Loading...</div>
+  </ng-template>

@@ -12,29 +12,32 @@ export class DetailComponent implements OnInit {
 
   card: CardsPageableModel;
   pokemonId: string;
-  
-  constructor(private route: ActivatedRoute, private router: Router, private apiCardsService: ApiCardsService) { 
+
+  constructor(private route: ActivatedRoute, private router: Router, private apiCardsService: ApiCardsService) {
     route.params.subscribe(params => {
       this.pokemonId = params.pokemonId;
 
       this.apiCardsService.getPokemonById(this.pokemonId).subscribe(data => {
-        data['cards'].length === 0 ? router.navigate(['/']) : '';        
-        data['cards'].map((card) => {
-          this.card = {
-            ...new CardsPageableModel(), 
-            attacks: card.attacks,
-            id: card.id,
-            imageUrl: card.imageUrl,
-            imageUrlHiRes: card.imageUrlHiRes,
-            name: card.name,
-            types: card.types,
-            weaknesses: card.weaknesses,
-            resistances: card.resistances,
-          };
-        });
+
+        data['cards'].length === 0 ? router.navigate(['/']) : '';
+        setTimeout(
+          data['cards'].map((card) => {
+            this.card = {
+              ...new CardsPageableModel(),
+              attacks: card.attacks,
+              id: card.id,
+              imageUrl: card.imageUrl,
+              imageUrlHiRes: card.imageUrlHiRes,
+              name: card.name,
+              types: card.types,
+              weaknesses: card.weaknesses,
+              resistances: card.resistances,
+            };
+          })
+          , 2000)
       });
 
-    });    
+    });
   }
 
   ngOnInit(): void {

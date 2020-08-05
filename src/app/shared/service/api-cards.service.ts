@@ -18,7 +18,7 @@ export class ApiCardsService {
    * getCardsWithFlag
    */
   public getCardsWithFlag(flag?: string): Observable<[]> {
-    return this.httpClient.get<[]>(this.API_URL + '?page=1&pageSize=20&supertype=Pokémon');
+    return this.httpClient.get<[]>(this.API_URL + '?page=1&pageSize=100&supertype=Pokémon');
   }
   public getPokemonById(pokemonId: string): Observable<Array<any>> {
     return this.httpClient.get<Array<any>>(this.API_URL + `?id=${pokemonId}`);
